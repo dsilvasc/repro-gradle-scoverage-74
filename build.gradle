@@ -13,6 +13,7 @@ buildscript {
   dependencies {
     classpath 'org.github.ngbinh.scalastyle:gradle-scalastyle-plugin_2.12:1.0.1'
     classpath('gradle.plugin.org.scoverage:gradle-scoverage:2.2.0') {
+        // uncomment the following line to work around the issue:
 //      exclude module: 'scalac-scoverage-plugin_2.11'
     }
   }
