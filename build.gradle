@@ -1,0 +1,35 @@
+
+buildscript {
+  repositories {
+    jcenter()
+    maven {
+      url = "https://dl.bintray.com/ngbinh/maven"
+    }
+    maven {
+      url = "https://plugins.gradle.org/m2/"
+    }
+  }
+
+  dependencies {
+    classpath 'org.github.ngbinh.scalastyle:gradle-scalastyle-plugin_2.12:1.0.1'
+    classpath('gradle.plugin.org.scoverage:gradle-scoverage:2.2.0') {
+//      exclude module: 'scalac-scoverage-plugin_2.11'
+    }
+  }
+}
+
+apply plugin: 'scala'
+apply plugin: 'scalaStyle'
+apply plugin: org.scoverage.ScoveragePlugin
+
+dependencies {
+  compile 'org.scala-lang:scala-library:2.12.6'
+  scoverage 'org.scoverage:scalac-scoverage-plugin_2.12:1.3.1', 'org.scoverage:scalac-scoverage-runtime_2.12:1.3.1'
+}
+
+scalaStyle {
+    configLocation = "$rootProject.projectDir/project/scalastyle_config.xml"
+    includeTestSourceDirectory = false
+    source = "src/main/scala"
+}
+

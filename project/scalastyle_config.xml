@@ -1,0 +1,127 @@
+<scalastyle commentFilter="enabled">
+  <name>Scalastyle configuration</name>
+  <check level="error" class="org.scalastyle.file.FileLineLengthChecker" enabled="true">
+    <parameters>
+      <parameter default="110" type="integer" name="maxLineLength">120</parameter>
+    </parameters>
+  </check>
+  <check level="error" class="org.scalastyle.file.FileTabChecker" enabled="true" />
+  <!-- blocked on https://github.com/scalastyle/scalastyle/issues/188 -->
+  <!-- check level="error" class="org.scalastyle.file.IndentationChecker" enabled="true">
+    <parameters>
+      <parameter name="tabSize">2</parameter>
+      <parameter name="methodParamIndentSize">2</parameter>
+    </parameters>
+  </check-->
+  <check enabled="true" class="org.scalastyle.file.NewlineAtEofChecker" level="error" />
+  <check enabled="true" class="org.scalastyle.file.WhitespaceEndOfLineChecker" level="error" />
+  <check enabled="true" class="org.scalastyle.scalariform.ClassNamesChecker" level="error">
+    <parameters>
+      <parameter name="regex">^[A-Z][A-Za-z0-9]*$</parameter>
+    </parameters>
+  </check>
+  <check enabled="true" class="org.scalastyle.scalariform.CovariantEqualsChecker" level="error"/>
+  <check enabled="true" class="org.scalastyle.scalariform.DeprecatedJavaChecker" level="error"/>
+  <check enabled="true" class="org.scalastyle.scalariform.DisallowSpaceAfterTokenChecker" level="error">
+    <parameters>
+      <parameter name="tokens">LPAREN</parameter>
+    </parameters>
+  </check>
+  <check enabled="true" class="org.scalastyle.scalariform.DisallowSpaceBeforeTokenChecker" level="error">
+    <parameters>
+      <parameter name="tokens">COLON, COMMA, RPAREN</parameter>
+    </parameters>
+  </check>
+  <check enabled="true" class="org.scalastyle.scalariform.EmptyClassChecker" level="error"/>
+  <check enabled="true" class="org.scalastyle.scalariform.EnsureSingleSpaceAfterTokenChecker" level="error">
+    <parameters>
+      <parameter name="tokens">COLON, IF</parameter>
+    </parameters>
+  </check>
+  <check enabled="true" class="org.scalastyle.scalariform.EqualsHashCodeChecker" level="error"/>
+  <check enabled="true" class="org.scalastyle.scalariform.FieldNamesChecker" level="error">
+    <parameters>
+      <!-- pending https://github.com/scalastyle/scalastyle/issues/255 -->
+      <parameter name="regex">^[a-z][A-Za-z0-9_]*$</parameter>
+      <parameter name="objectFieldRegex">^([A-Z_]+)|([a-z][A-Za-z0-9_]*)$</parameter>
+    </parameters>
+  </check>
+  <!-- not enabling this because it also prohibits parens in single-variable comprehensions like
+         for (x <- List(...)) {
+           ...
+         }
+  <check enabled="true" class="org.scalastyle.scalariform.ForBraceChecker" level="error"/>
+    -->
+  <check enabled="true" class="org.scalastyle.scalariform.IfBraceChecker" level="error">
+    <parameters>
+      <parameter name="singleLineAllowed">true</parameter>
+      <parameter name="doubleLineAllowed">true</parameter>
+    </parameters>
+  </check>
+  <check enabled="true" class="org.scalastyle.scalariform.IllegalImportsChecker" level="error">
+    <parameters>
+      <!-- sun._ is internal to the JDK.
+           java.awt._ is deprecated.
+           avro.shaded._, jersey.repackaged._, com.google.appengine.repackage._, com.google.appengine.labs.repackaged._ are all internally repackaged libraries
+           cats._, scalaz._, shapeless._ have steep ramp-ups, poor documentation, and symbolic names that are difficult to search on github
+           -->
+      <parameter name="illegalImports">sun._,java.awt._,avro.shaded._,jersey.repackaged._,com.google.appengine.repackaged._,com.google.appengine.labs.repackaged._,cats._,scalaz._,shapeless._</parameter>
+    </parameters>
+  </check>
+  <!--
+  <check enabled="true" class="org.scalastyle.scalariform.MagicNumberChecker" level="error">
+    <parameters>
+      <parameter name="ignore">-1,0,1,2,3</parameter>
+    </parameters>
+  </check>
+  -->
+  <check enabled="true" class="org.scalastyle.scalariform.MethodNamesChecker" level="error">
+    <parameters>
+      <parameter name="regex">^[a-z][A-Za-z0-9]*$</parameter>
+      <parameter name="ignoreOverride">true</parameter>
+    </parameters>
+  </check>
+  <check enabled="true" class="org.scalastyle.scalariform.NoCloneChecker" level="error"/>
+  <check enabled="true" class="org.scalastyle.scalariform.NoFinalizeChecker" level="error"/>
+  <check enabled="true" class="org.scalastyle.scalariform.NoWhitespaceAfterLeftBracketChecker" level="error"/>
+  <check enabled="true" class="org.scalastyle.scalariform.NoWhitespaceBeforeLeftBracketChecker" level="error"/>
+  <check enabled="true" class="org.scalastyle.scalariform.NullChecker" level="error"/>
+  <check enabled="true" class="org.scalastyle.scalariform.ObjectNamesChecker" level="error">
+    <parameters>
+      <parameter name="regex">^[A-Z][A-Za-z0-9]*$</parameter>
+    </parameters>
+  </check>
+  <check enabled="true" class="org.scalastyle.scalariform.ProcedureDeclarationChecker" level="error"/>
+  <!-- check enabled="true" class="org.scalastyle.scalariform.PublicMethodsHaveTypeChecker" level="error">
+    <parameters>
+      <parameter name="ignoreOverride">true</parameter>
+    </parameters>
+  </check -->
+  <check enabled="true" class="org.scalastyle.scalariform.RedundantIfChecker" level="error"/>
+  <check enabled="true" class="org.scalastyle.scalariform.ReturnChecker" level="error"/>
+  <check enabled="true" class="org.scalastyle.scalariform.SimplifyBooleanExpressionChecker" level="error"/>
+  <check enabled="true" class="org.scalastyle.scalariform.SpaceAfterCommentStartChecker" level="error"/>
+  <check enabled="true" class="org.scalastyle.scalariform.SpacesAfterPlusChecker" level="error"/>
+  <check enabled="true" class="org.scalastyle.scalariform.BeforePlusChecker" level="error"/>
+  <check enabled="true" class="org.scalastyle.scalariform.StructuralTypeChecker" level="error"/>
+  <!-- Disabling because the error message is not helpful in the IntelliJ tooltip.
+       It says "Regular expression matched '{0}' in a token"
+
+  <check enabled="true" class="org.scalastyle.scalariform.TokenChecker" level="error">
+    <parameters>
+      <parameter name="regex">^[ai]sInstanceOf$</parameter>
+    </parameters>
+    <customMessage>Avoid casting.</customMessage>
+  </check>
+  -->
+  <!-- pending a new release: https://github.com/scalastyle/scalastyle/issues/220 -->
+  <!-- check enabled="true" class="org.scalastyle.scalariform.UnderscoreImportChecker" level="error">
+    <parameters>
+      <parameter name="ignoreRegex">collection\.JavaConverters\._|scala\.concurrent\.duration\._</parameter>
+    </parameters>
+  </check -->
+  <check enabled="true" class="org.scalastyle.scalariform.UppercaseLChecker" level="error"/>
+  <check enabled="true" class="org.scalastyle.scalariform.VarFieldChecker" level="error"/>
+  <check enabled="true" class="org.scalastyle.scalariform.VarLocalChecker" level="error"/>
+  <check enabled="true" class="org.scalastyle.scalariform.WhileChecker" level="error"/>
+</scalastyle>
